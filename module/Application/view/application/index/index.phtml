@@ -1,0 +1,87 @@
+<h3><?php echo $this->translate('Home') ?></h3>
+
+<br>
+<br>
+
+<?php  
+echo $this->dateFormat(
+	new DateTime('now'),
+    //IntlDateFormatter::FULL,
+    IntlDateFormatter::SHORT,
+    //IntlDateFormatter::LONG,
+    //IntlDateFormatter::MEDIUM,
+    2,
+    "pt_BR"
+)
+
+?>
+
+<?php 
+
+    //varias datas
+    echo "<br><br>";
+    $this->plugin(
+        'dateFormat')->setTimezone("America/Araguaina")->setLocale('pt_BR');
+
+    echo $this->dateFormat(
+        new DateTime(), 
+        IntlDateFormatter::FULL,
+        IntlDateFormatter::NONE
+    );
+?>
+
+<?php 
+/*
+ * NumberFormat
+ */
+echo "<br><br>";
+echo $this->numberFormat(   
+    1234.5689,
+    NumberFormatter::DECIMAL,
+    NumberFormatter::TYPE_DEFAULT,
+    'pt_BR'
+);
+echo "<br><br>";
+
+echo $this->numberFormat(
+		0.43,
+		NumberFormatter::PERCENT,
+		NumberFormatter::TYPE_DEFAULT,
+		'pt_BR'
+);
+
+echo "<br><br>";
+
+echo $this->numberFormat(
+		0.112121,
+		NumberFormatter::SCIENTIFIC,
+		NumberFormatter::TYPE_DEFAULT,
+		'pt_BR'
+);
+
+echo "<br><br>";
+
+echo $this->currencyFormat(
+		12.3,
+		'BRL',
+		'pt_BR'
+);
+?>
+
+<?php 
+/*
+ * Plural
+ */
+echo "<br><br>";
+echo $this->translatePlural('cachorro', 'cachorros', 1)
+
+?>
+
+
+
+
+
+
+
+
+
